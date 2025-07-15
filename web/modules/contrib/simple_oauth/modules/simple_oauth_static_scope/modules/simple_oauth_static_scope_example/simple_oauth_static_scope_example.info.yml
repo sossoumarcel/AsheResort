@@ -1,0 +1,12 @@
+name: Simple OAuth static scope example
+type: module
+description: Provides example static scopes.
+core_version_requirement: ^10.2 || ^11
+package: Examples
+dependencies:
+  - simple_oauth:simple_oauth_static_scope
+
+# Information added by Drupal.org packaging script on 2025-03-07
+version: '6.0.0'
+project: 'simple_oauth'
+datestamp: 1741341104

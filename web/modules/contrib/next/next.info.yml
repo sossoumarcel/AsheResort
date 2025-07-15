@@ -1,0 +1,16 @@
+name: Next.js
+description: Next.js + Drupal for Incremental Static Regeneration and Draft mode.
+type: module
+core_version_requirement: ^10 || ^11
+package: Web services
+configure: entity.next_site.collection
+dependencies:
+  - decoupled_router:decoupled_router
+  - simple_oauth:simple_oauth
+  - subrequests:subrequests
+  - pathauto:pathauto
+
+# Information added by Drupal.org packaging script on 2025-02-11
+version: '2.0.0'
+project: 'next'
+datestamp: 1739303971

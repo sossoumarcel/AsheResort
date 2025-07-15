@@ -1,0 +1,15 @@
+subrequests_test.alpha:
+  path: '/subrequests-test/alpha'
+  defaults:
+    _controller: '\Drupal\subrequests_test\Controller\TestController::alpha'
+  requirements:
+    # Allowed for testing.
+    _access: 'TRUE'
+
+subrequests_test.bravo:
+  path: '/subrequests-test/bravo'
+  defaults:
+    _controller: '\Drupal\subrequests_test\Controller\TestController::bravo'
+  requirements:
+    # Allowed for testing.
+    _access: 'TRUE'
