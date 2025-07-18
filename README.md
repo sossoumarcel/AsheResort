@@ -72,9 +72,8 @@ php -S localhost:8080 .ht.router.php
 📍 Ouvrir ensuite ton navigateur à l'adresse :  
 [http://localhost:8080](http://localhost:8080)
 ---
-##Se connecter avec comme identifiant: 
-user: Dali
-password: CVR5002Ma@@@
+##Créer un compte utilisateur
+cliquer sur créer un compte et suivre les etapes
 ---
 
 ## 🎨 5. Lancer le frontend
