@@ -1,0 +1,11 @@
+name: 'Subrequests Test'
+type: module
+package: Testing
+description: Provides routes for functional tests of Subrequests.
+dependencies:
+  - subrequests:subrequests
+
+# Information added by Drupal.org packaging script on 2024-08-06
+version: '3.0.12'
+project: 'subrequests'
+datestamp: 1722952641

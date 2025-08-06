@@ -1,0 +1,22 @@
+{
+  "name": "drupal/next",
+  "description": "Next.js + Drupal for Incremental Static Regeneration and Draft mode.",
+  "type": "drupal-module",
+  "homepage": "http://drupal.org/project/next",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "shadcn",
+      "homepage": "https://www.chapterthree.com"
+    }
+  ],
+  "require": {
+    "drupal/decoupled_router": "^2.0",
+    "drupal/pathauto": "^1.11",
+    "drupal/simple_oauth": "^5.0 || ^6.0",
+    "drupal/subrequests": "^3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9 || ^10"
+  }
+}

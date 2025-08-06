@@ -1,0 +1,6 @@
+services:
+  subrequests_test.request_policy:
+    class: Drupal\subrequests_test\TestPolicy
+    arguments: ['@state']
+    tags:
+      - { name: page_cache_request_policy }

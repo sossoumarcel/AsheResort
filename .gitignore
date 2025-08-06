@@ -1,0 +1,27 @@
+# Ignorer les fichiers temporaires
+sites/*/files
+sites/*/private
+sites/*/settings.local.php
+sites/*/services.local.yml
+sites/*/development.services.yml
+
+# Ignorer les répertoires générés automatiquement
+/vendor/
+core/
+modules/contrib/
+themes/contrib/
+libraries/
+node_modules/
+frontend/  #Nom de votre dossier Frontrend
+# Ignorer les fichiers système
+*.log
+*.sql
+*.sqlite
+*.zip
+*.tar.gz
+.idea/
+.vscode/
+.DS_Store
+
+# Fichiers de configuration locale
+.env

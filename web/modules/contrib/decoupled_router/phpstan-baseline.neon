@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: src/Controller/PathTranslator.php
+
+		-
+			message: "#^Access to an undefined property Drupal\\\\Core\\\\Field\\\\FieldItemListInterface\\<Drupal\\\\Core\\\\Field\\\\FieldItemInterface\\>\\:\\:\\$uri\\.$#"
+			count: 1
+			path: src/EventSubscriber/RedirectPathTranslatorSubscriber.php
