@@ -162,3 +162,5 @@ Voici une version formelle, structurée et concise de votre README, pour garanti
 | 5     | Synchroniser si besoin (`rebase` ou `merge`) | `feature/...`           |
 
 ---
+# Lien du storybook
+https://asheresortstorybook.vercel.app/?path=/docs/configure-your-project--docs
