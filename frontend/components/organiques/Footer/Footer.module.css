@@ -1,5 +1,5 @@
 .footer {
-  background-color: green; /* Darker background for a modern look */
+  background-color:#2E7D32; /* Darker background for a modern look */
   color: #ecf0f1; /* Light text color */
   padding: 40px 20px;
   font-family: Arial, sans-serif;
@@ -27,7 +27,7 @@
 }
 
 .footer-brand-info h2 {
-  color: #3498db; /* Accent color for brand name */
+  color: #3498db; 
   margin-bottom: 10px;
 }
 
@@ -88,6 +88,7 @@
 .footer-section {
   min-width: 150px;
   text-align: left;
+  font-family: Montserrat;
 }
 
 .footer-section h3 {
@@ -132,6 +133,7 @@
   color: #bdc3c7;
   line-height: 1.6;
   margin-bottom: 10px;
+  font-family: lora;
 }
 
 .language-selector-group h3 {
@@ -174,6 +176,23 @@
 .footer-copyright {
   font-size: 0.9em;
   color: #bdc3c7;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-legal a {
+  text-decoration: none;
+  color: #bdc3c7;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: #3498db;
 }
 
 /* Responsive adjustments */
