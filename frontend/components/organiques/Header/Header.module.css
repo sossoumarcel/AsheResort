@@ -82,7 +82,7 @@
 
 
 .logo img {
-  height: 50px; /* Adjust as needed */
+  height: 110px; /* Adjust as needed */
 }
 
 .userMenu {
@@ -141,4 +141,7 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+.Logo{
+  height: 200px;
 }
