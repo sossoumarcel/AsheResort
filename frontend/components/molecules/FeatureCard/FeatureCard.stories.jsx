@@ -1,5 +1,4 @@
-import React from "react";
-import { FeatureCard } from "./FeatureCard"; // Import corrigé : même dossier
+import { FeatureCard } from "./FeatureCard";
 
 export default {
   title: "Molécules/FeatureCard",

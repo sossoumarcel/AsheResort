@@ -1,4 +1,3 @@
-
 // components/HeroBanner.stories.tsx
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -8,6 +7,9 @@ const meta: Meta<typeof HeroBanner> = {
   title: 'Composants/HeroBanner',
   component: HeroBanner,
   tags: ['autodocs'],
+  argTypes: {
+    isMobile: { control: 'boolean' },
+  },
 };
 
 export default meta;
@@ -20,5 +22,18 @@ export const Default: Story = {
     imageUrl: 'https://source.unsplash.com/1600x900/?benin,nature,agriculture',
     buttonLabel: 'Découvrir',
     onClick: () => alert('Bouton cliqué !'),
+    isMobile: false,
+  },
+};
+
+export const Mobile: Story = {
+  args: {
+    ...Default.args,
+    isMobile: true,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
   },
 };

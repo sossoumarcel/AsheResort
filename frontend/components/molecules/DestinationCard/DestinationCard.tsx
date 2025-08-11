@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from '../../atoms/image/Image';
 import Title from '../../atoms/titre/Titre';
@@ -11,6 +10,7 @@ interface DestinationCardProps {
   destinationName: string;
   destinationDescription: string;
   onMoreInfoClick: () => void;
+  isMobile?: boolean; // Nouvelle prop
 }
 
 const DestinationCard: React.FC<DestinationCardProps> = ({
@@ -19,7 +19,21 @@ const DestinationCard: React.FC<DestinationCardProps> = ({
   destinationName,
   destinationDescription,
   onMoreInfoClick,
+  isMobile = false,
 }) => {
+  if (isMobile) {
+    return (
+      <div className="max-w-xs rounded-lg overflow-hidden shadow-lg bg-white">
+        <Image src={imageUrl} alt={imageAlt} className="w-full h-48 object-cover" />
+        <div className="p-4">
+          <Title level={3} text={destinationName} className="font-bold text-lg mb-1" />
+          <Paragraph text={destinationDescription} className="text-gray-600 text-sm mb-3" />
+          <Button onClick={onMoreInfoClick} label="Explorer" style="secondary" />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative max-w-sm rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
       <Image src={imageUrl} alt={imageAlt} className="w-full h-full object-cover" />
