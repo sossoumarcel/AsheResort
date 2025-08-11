@@ -1,23 +1,22 @@
 import React from 'react';
-import { FaFacebook, FaShoppingCart, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
+import { IconProps } from './types';
 
-type IconType = 'facebook' | 'cart' | 'location';
-
-interface IconProps {
-  type: IconType;
-  size?: number;
-  color?: string;
-}
-
-const Icon: React.FC<IconProps> = ({ type, size = 20, color = 'black' }) => {
-  const icons = {
-    facebook: <FaFacebook size={size} color={color} />,
-    cart: <FaShoppingCart size={size} color={color} />,
-    location: <FaMapMarkerAlt size={size} color={color} />,
-    calendar: <FaCalendarAlt size={size} color={color} />,
-  };
-
-  return icons[type] || null;
+const Icon = ({ name, size = 24 }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <use href={`/icons.svg#${name}`} />
+    </svg>
+  );
 };
 
 export default Icon;

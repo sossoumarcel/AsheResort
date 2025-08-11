@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
+import Logo from '../atoms/Logo/Logo'
 
 interface HeaderProps {
   isMobile?: boolean;
@@ -9,8 +10,7 @@ export const Header: React.FC<HeaderProps> = ({ isMobile = false }) => {
   return (
     <header className={`${styles.header} ${isMobile ? styles.mobile : styles.desktop}`}>
       <div className={styles.logo}>
-        {/* Atome: Image (à remplacer par votre composant Image) */}
-        <img src="/logo.svg" alt="Ashe Resort Logo" />
+        <Logo/>
       </div>
       <nav className={styles.navigation}>
         {/* Molécule: Navigation (à remplacer par votre composant Navigation) */}
