@@ -1,43 +1,97 @@
-// components/HeroBanner.tsx
-import React from 'react';
+import React, { useState, CSSProperties } from 'react';
 
 type HeroBannerProps = {
   title: string;
   subtitle: string;
-  imageUrl: string;
-  buttonLabel?: string;
-  onClick?: () => void;
-  isMobile?: boolean; // Nouvelle prop
+  backgroundImage?: string;
+  buttonText?: string;
+  buttonLink?: string;
 };
 
-const HeroBanner: React.FC<HeroBannerProps> = ({ title, subtitle, imageUrl, buttonLabel, onClick, isMobile = false }) => {
-  const sectionClasses = isMobile ? "relative w-full h-[300px] flex items-center justify-center text-white" : "relative w-full h-[500px] flex items-center justify-center text-white";
-  const contentClasses = isMobile ? "bg-black bg-opacity-60 p-4 rounded-xl text-center max-w-sm" : "bg-black bg-opacity-60 p-8 rounded-xl text-center max-w-xl";
-  const titleClasses = isMobile ? "text-2xl font-bold mb-2" : "text-4xl font-bold mb-4";
-  const subtitleClasses = isMobile ? "text-sm mb-4" : "text-lg mb-6";
+const HeroBanner: React.FC<HeroBannerProps> = ({
+  title,
+  subtitle,
+  backgroundImage,
+  buttonText,
+  buttonLink,
+}) => {
+  const hasImage = Boolean(backgroundImage);
+
+  const containerStyle: CSSProperties = {
+    backgroundImage: hasImage ? `url(${backgroundImage})` : undefined,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundColor: hasImage ? undefined : '#333',
+    color: 'white',
+    padding: '100px 40px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    position: 'relative',
+    minHeight: '400px',
+  };
+
+  const overlayStyle: CSSProperties = hasImage
+    ? {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        zIndex: 0,
+      }
+    : {};
+
+  const contentStyle: CSSProperties = {
+    position: hasImage ? 'relative' : 'static',
+    zIndex: 1,
+    maxWidth: '600px',
+    textAlign: 'left',
+  };
+
+  const buttonStyle: CSSProperties = {
+    marginTop: '20px',
+    padding: '12px 24px',
+    backgroundColor: '#2E7D32',
+    color: 'white',
+    border: 'none',
+    borderRadius: '8px',
+    fontSize: '16px',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    display: 'inline-block',
+    transition: 'all 0.3s ease',
+  };
+
+  const buttonHoverStyle: CSSProperties = {
+    transform: 'translateY(-3px)',
+    backgroundColor: '#68300c',
+  };
+
+  const [isHovered, setHovered] = useState(false);
 
   return (
-    <section
-      className={sectionClasses}
-      style={{
-        backgroundImage: `url(${imageUrl})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      <div className={contentClasses}>
-        <h1 className={titleClasses}>{title}</h1>
-        <p className={subtitleClasses}>{subtitle}</p>
-        {buttonLabel && (
-          <button
-            onClick={onClick}
-            className="bg-green-600 hover:bg-green-700 px-6 py-2 rounded-md text-white font-semibold"
+    <div style={containerStyle}>
+      {hasImage && <div style={overlayStyle} />}
+      <div style={contentStyle}>
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+        {buttonText && buttonLink && (
+          <a
+            href={buttonLink}
+            style={{
+              ...buttonStyle,
+              ...(isHovered ? buttonHoverStyle : {}),
+            }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
           >
-            {buttonLabel}
-          </button>
+            {buttonText}
+          </a>
         )}
       </div>
-    </section>
+    </div>
   );
 };
 
