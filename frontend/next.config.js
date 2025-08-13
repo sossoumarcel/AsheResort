@@ -1,16 +1,13 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+// next.config.js
+module.exports = {
   images: {
     remotePatterns: [
       {
-        // protocol: 'https',
-       hostname: process.env.NEXT_IMAGE_DOMAIN,
-        // port: '',
-        // pathname: '/sites/default/files/**',
+        protocol: 'https',
+        hostname: 'example.com',
+        port: '', // facultatif
+        pathname: '/**', // toutes les images
       },
     ],
   },
-}
-
-module.exports = nextConfig
+};

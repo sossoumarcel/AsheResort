@@ -1,17 +1,16 @@
-
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { IncontournablesSection } from "./IncontournablesSection";
 
-export default {
-  title: "Organiques/IncontournablesSection",
+const meta: Meta<typeof IncontournablesSection> = {
+  title: "Organisms/IncontournablesSection",
   component: IncontournablesSection,
 };
 
-export const Default = {};
+export default meta;
 
-export const Mobile = {
-  parameters: {
-    viewport: {
-      defaultViewport: "mobile1",
-    },
-  },
+type Story = StoryObj<typeof IncontournablesSection>;
+
+export const Default: Story = {
+  render: () => <IncontournablesSection />,
 };
