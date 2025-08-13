@@ -1,34 +1,30 @@
-import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import EventCard from './EventCard';
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import EventCard from "./EventCard";
 
-export default {
-  title: 'Molecules/EventCard',
+const meta: Meta<typeof EventCard> = {
+  title: "Molecules/EventCard",
   component: EventCard,
-  argTypes: {
-    isMobile: { control: 'boolean' },
+};
+
+export default meta;
+
+type Story = StoryObj<typeof EventCard>;
+
+export const VodounFestival: Story = {
+  args: {
+    image: "/images/events/vodoun_festival.jpg",
+    title: "Festival Vodoun",
+    date: "Janvier",
+    description: "Célébration annuelle de la culture vaudou avec danses, rituels et musique traditionnelle.",
   },
-} as Meta;
-
-const Template: StoryFn<typeof EventCard> = (args) => <EventCard {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  imageUrl: '/images/Untitled Image.png',
-  imageAlt: 'Un événement passionnant',
-  eventTitle: 'Concert en Plein Air',
-  eventDate: '25 décembre 2024',
-  eventLocation: 'Parc de la Ville',
-  isMobile: false,
 };
 
-export const Mobile = Template.bind({});
-Mobile.args = {
-  ...Default.args,
-  isMobile: true,
-};
-Mobile.parameters = {
-  viewport: {
-    defaultViewport: 'mobile1',
+export const weloveya: Story = {
+  args: {
+    image: "/images/events/weloveya_E.jpg",
+    title: "Weloveya",
+    date: "Décembre",
+    description: "Festival de musique et d'art contemporain mettant en avant les talents locaux et internationaux.",
   },
 };
