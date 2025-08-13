@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
-import Logo from '../atoms/Logo/Logo'
+import Logo from '@/components/atoms/Logo';
 
 interface HeaderProps {
   isMobile?: boolean;
