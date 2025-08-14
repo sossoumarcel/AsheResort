@@ -1,47 +1,93 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import styles from './Header.module.css';
 import Logo from '@/components/atoms/Logo';
+import Link from 'next/link';
+
+// --- Définition des types pour les données du menu ---
+interface MenuItemType {
+  id: string;
+  title: string;
+  url?: string;
+  below?: MenuItemType[];
+}
 
 interface HeaderProps {
   isMobile?: boolean;
 }
 
+const DRUPAL_MENU_API = 'http://35.180.27.20/api/menu_items/main?_format=json';
+
+const MenuItem: React.FC<{ item: MenuItemType; itemKey: string }> = ({ item, itemKey }) => {
+  const hasSubMenu = item.below && item.below.length > 0;
+
+  const getCleanUrl = (url?: string) => {
+    if (!url) return '#';
+    if (url.startsWith('internal:')) return url.substring(9);
+    if (url.startsWith('entity:')) return url.replace('entity:', '').replace('node/', '/node/');
+    return url;
+  };
+
+  return (
+    <li className={hasSubMenu ? styles.dropdown : ''}>
+      <Link href={getCleanUrl(item.url)}>
+        {item.title} {hasSubMenu && '▼'}
+      </Link>
+      {hasSubMenu && (
+        <ul className={styles.dropdownContent}>
+          {item.below?.map((subItem, index) => (
+            // <-- CORRECTION: Clé composite pour les sous-menus
+            <MenuItem key={`${subItem.id}-${index}`} item={subItem} itemKey={`${subItem.id}-${index}`} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+};
+
 export const Header: React.FC<HeaderProps> = ({ isMobile = false }) => {
+  const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(DRUPAL_MENU_API);
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        const data = await response.json();
+        setMenuItems(data);
+      } catch (e: any) {
+        console.error("Erreur lors de la récupération du menu:", e);
+        setError("Impossible de charger le menu.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMenuItems();
+  }, []);
+
   return (
     <header className={`${styles.header} ${isMobile ? styles.mobile : styles.desktop}`}>
-      {/* Logo */}
       <div className={styles.logo}>
         <Logo />
       </div>
-
-      {/* Menu principal */}
       <nav className={styles.navigation}>
-        <ul>
-          <li className={styles.dropdown}>
-            <a href="/destinations">Destinations ▼</a>
-            <ul className={styles.dropdownContent}>
-              <li><a href="/destinations/offers">Offres</a></li>
-              <li><a href="/destinations/accommodations">Hébergements</a></li>
-              <li><a href="/destinations/itineraries">Itinéraires</a></li>
-              <li><a href="/destinations/must-sees">Incontournables</a></li>
-              <li><a href="/destinations/community">Communauté</a></li>
-            </ul>
-          </li>
-
-          <li className={styles.dropdown}>
-            <a href="/about">À propos ▼</a>
-            <ul className={styles.dropdownContent}>
-              <li><a href="/about/agency">L’agence</a></li>
-              <li><a href="/about/team">Sur-mesure</a></li>
-              <li><a href="/about/partners">Partenaires</a></li>
-            </ul>
-          </li>
-
-          <li><a href="/contact">Contact</a></li>
-        </ul>
+        {loading && <p>Chargement du menu...</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {!loading && !error && (
+          <ul>
+            {menuItems.map((item, index) => (
+              // <-- CORRECTION: On crée une clé composite avec l'ID et l'index pour garantir l'unicité
+              <MenuItem key={`${item.id}-${index}`} item={item} itemKey={`${item.id}-${index}`} />
+            ))}
+          </ul>
+        )}
       </nav>
-
-      {/* Icône utilisateur avec menu déroulant */}
       <div className={`${styles.userMenu} ${styles.dropdown}`}>
         <svg className={styles.userIcon}>
           <use href="/icons.svg#user" />
@@ -54,3 +100,5 @@ export const Header: React.FC<HeaderProps> = ({ isMobile = false }) => {
     </header>
   );
 };
+
+export default Header;

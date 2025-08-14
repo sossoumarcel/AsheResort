@@ -1,7 +1,10 @@
+// components/organiques/Footer/Footer.tsx
+
 import React from 'react';
 import styles from './Footer.module.css';
-import Icon from '@/components/atoms/Icon';// 🔹 Adapte le chemin selon où se trouve ton fichier Icon.tsx
+import Icon from '@/components/atoms/Icon'; // 🔹 Adapte le chemin selon où se trouve ton fichier Icon.tsx
 import Logo from '@/components/atoms/Logo';
+
 interface FooterProps {
   isMobile?: boolean;
 }
@@ -9,13 +12,15 @@ interface FooterProps {
 export const Footer = ({ isMobile }: FooterProps) => {
   const footerClass = isMobile ? `${styles.footer} ${styles.mobile}` : styles.footer;
 
+  // Ce code est correct. Il retourne bien une balise <footer>
+  // et ne contient pas de <html> ou <body>, ce qui est parfait.
   return (
     <footer className={footerClass}>
       <div className={styles['footer-container']}>
         <div className={styles['footer-top']}>
           {/* --- Bloc logo + réseaux sociaux --- */}
           <div className={styles['footer-brand-info']}>
-          <Logo variant="monochrome" />
+            <Logo variant="monochrome" />
             <h2>AsheResort</h2>
             <p className={styles['footer-slogan']}>
               Découvrez le Bénin autrement, vivez l'authenticité.

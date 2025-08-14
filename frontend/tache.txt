@@ -1,0 +1,13 @@
+ Unable to index ./components/molecules/EventCard/EventCard.stories.tsx:
+  SyntaxError: Unexpected token, expected "," (18:38)
+    at constructor (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:14578:15)
+    at Rl.raise (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:16900:54)
+    at Rl.unexpected (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:16917:18)
+    at Rl.expect (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:17181:27)
+    at Rl.parseObjectLike (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:22294:23)
+    at Rl.parseExprAtom (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:22006:23)
+    at Rl.parseExprAtom (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:19349:45)
+    at Rl.parseExprSubscripts (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:21853:78)
+    at Rl.parseUpdate (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:21843:45)
+    at Rl.parseMaybeUnary (C:\Users\dalin\Documents\Programmation\Ashe-resort\frontend\node_modules\storybook\dist\babel\index.cjs:21828:20)
+? Would you like to help improve Storybook by sending anonymous crash reports? » (Y/n)

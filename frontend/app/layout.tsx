@@ -1,9 +1,11 @@
-import { DraftAlert } from "@/components/misc/DraftAlert"
-import { HeaderNav } from "@/components/navigation/HeaderNav"
-import type { Metadata } from "next"
-import type { ReactNode } from "react"
+// app/layout.tsx
 
-import "@/styles/globals.css"
+import { DraftAlert } from "@/components/misc/DraftAlert";
+import { Header } from "@/components/organiques/Header/Header";
+import { Footer } from "@/components/organiques/Footer/Footer";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -14,24 +16,33 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-}
+};
 
 export default function RootLayout({
-  // Layouts must accept a children prop.
-  // This will be populated with nested layouts or pages
   children,
 }: {
-  children: ReactNode
+  children: ReactNode;
 }) {
   return (
     <html lang="en">
       <body>
         <DraftAlert />
+        
+        {/* --- CORRECTION 1 --- */}
+        {/* Le Header est maintenant un enfant direct de <body>. Il prendra toute la largeur. */}
+        <Header />
+
+        {/* --- CORRECTION 2 --- */}
+        {/* Cette div ne contient plus que le <main>. */}
+        {/* Elle sert à centrer UNIQUEMENT le contenu principal de la page. */}
         <div className="max-w-screen-md px-6 mx-auto">
-          <HeaderNav />
           <main className="container py-10 mx-auto">{children}</main>
         </div>
+        
+        {/* --- CORRECTION 3 --- */}
+        {/* Le Footer est aussi un enfant direct de <body> pour prendre toute la largeur. */}
+        <Footer />
       </body>
     </html>
-  )
+  );
 }
