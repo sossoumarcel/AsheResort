@@ -1,14 +1,38 @@
-import React from 'react';
-import EventsCarousel from './EventsCarousel';
+import type { Meta, StoryObj } from "@storybook/react";
+import EventsCarousel, { Event } from "./EventsCarousel";
 
-export default {
-  title: 'Organisms/EventsCarousel',
+const meta: Meta<typeof EventsCarousel> = {
+  title: "Organisms/EventsCarousel",
   component: EventsCarousel,
 };
 
-const sampleEvents = [
-  { title: 'Soirée Tropicale', date: '12 août 2025' },
-  { title: 'Concert Afro Jazz', date: '20 août 2025' },
+export default meta;
+
+const eventsData: Event[] = [
+  {
+    id: 1,
+    title: "Fête du Vodoun",
+    description: "Célébration des traditions et du patrimoine au Bénin.",
+    image: "/images/EventsCa/vodoun_fest.jpg",
+  },
+  {
+    id: 2,
+    title: "Festival des  masques",
+    description: "Événement culturel majeur celebrant les traditions ancestrales au Benin notamment a travers les masques rituels associe au Benin .",
+    image: "/images/EventsCa/masque.jpg",
+  },
+  {
+    id: 3,
+    title: "Weloveya ",
+    description: "Concerts et activités estivales à Cotonou.",
+    image: "/images/EventsCa/eya_festival.jpg",
+  },
 ];
 
-export const Default = () => <EventsCarousel events={sampleEvents} />;
+type Story = StoryObj<typeof EventsCarousel>;
+
+export const Default: Story = {
+  args: {
+    events: eventsData,
+  },
+};

@@ -1,14 +1,38 @@
-import React from 'react';
-import OffersList from './OffersList';
+import type { Meta, StoryObj } from "@storybook/react";
+import OffersList, { Offer } from "./OffersList";
 
-export default {
-  title: 'Organisms/OffersList',
+const meta: Meta<typeof OffersList> = {
+  title: "Organisms/OffersList",
   component: OffersList,
 };
 
-const sampleOffers = [
-  { title: 'Promo Plage', description: 'Réduction 50% sur les séjours' },
-  { title: 'Spa Gratuit', description: 'Offre valable tout août' },
+export default meta;
+
+const offersData: Offer[] = [
+  {
+    id: 1,
+    title: "Hôtel Sofitel",
+    description: "Un séjour relaxant avec vue sur la mer à Cotonou.",
+    image: "/images/offers/sofitel.jpg",
+  },
+  {
+    id: 2,
+    title: "Dégustation de mets locaux",
+    description: "Découvrez la gastronomie béninoise à travers nos ateliers.",
+    image: "/images/offers/degustation.jpg",
+  },
+  {
+    id: 3,
+    title: "Visite culturelle à Ouidah",
+    description: "Explorez l'histoire et le patrimoine du Bénin.",
+    image: "/images/offers/ouidah_tour.jpg",
+  },
 ];
 
-export const Default = () => <OffersList offers={sampleOffers} />;
+type Story = StoryObj<typeof OffersList>;
+
+export const Default: Story = {
+  args: {
+    offers: offersData,
+  },
+};
