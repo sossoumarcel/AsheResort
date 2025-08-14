@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
+import Logo from '@/components/atoms/Logo';
 
 interface HeaderProps {
   isMobile?: boolean;
@@ -8,14 +9,14 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ isMobile = false }) => {
   return (
     <header className={`${styles.header} ${isMobile ? styles.mobile : styles.desktop}`}>
+      {/* Logo */}
       <div className={styles.logo}>
-        {/* Atome: Image (à remplacer par votre composant Image) */}
-        <img src="/logo.svg" alt="Ashe Resort Logo" />
+        <Logo />
       </div>
+
+      {/* Menu principal */}
       <nav className={styles.navigation}>
-        {/* Molécule: Navigation (à remplacer par votre composant Navigation) */}
         <ul>
-          
           <li className={styles.dropdown}>
             <a href="/destinations">Destinations ▼</a>
             <ul className={styles.dropdownContent}>
@@ -26,6 +27,7 @@ export const Header: React.FC<HeaderProps> = ({ isMobile = false }) => {
               <li><a href="/destinations/community">Communauté</a></li>
             </ul>
           </li>
+
           <li className={styles.dropdown}>
             <a href="/about">À propos ▼</a>
             <ul className={styles.dropdownContent}>
@@ -34,11 +36,16 @@ export const Header: React.FC<HeaderProps> = ({ isMobile = false }) => {
               <li><a href="/about/partners">Partenaires</a></li>
             </ul>
           </li>
+
           <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
+
+      {/* Icône utilisateur avec menu déroulant */}
       <div className={`${styles.userMenu} ${styles.dropdown}`}>
-        <img src="/icons/user.svg" alt="User Menu" className={styles.userIcon} />
+        <svg className={styles.userIcon}>
+          <use href="/icons.svg#user" />
+        </svg>
         <ul className={styles.dropdownContent}>
           <li><a href="/register">Inscription</a></li>
           <li><a href="/login">Connexion</a></li>

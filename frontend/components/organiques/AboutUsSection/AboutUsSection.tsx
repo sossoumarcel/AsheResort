@@ -13,7 +13,7 @@ export const AboutUsSection = () => {
         {/* Colonne 1: Image */}
         <div>
           <Image
-            src="/images/Untitled Image.png"
+            src="/images/Ferme.jpg"
             alt="Ashe Resort Farm"
             width={600}
             height={400}

@@ -1,29 +1,31 @@
-// components/HeroBanner.stories.tsx
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import HeroBanner from './HeroBanner';
+import { ComponentProps } from 'react';
 
-const meta: Meta<typeof HeroBanner> = {
-  title: 'Composants/HeroBanner',
+type HeroBannerProps = ComponentProps<typeof HeroBanner>;
+
+export default {
+  title: 'Components/HeroBanner',
   component: HeroBanner,
-  tags: ['autodocs'],
   argTypes: {
-    isMobile: { control: 'boolean' },
+    title: { control: 'text' },
+    subtitle: { control: 'text' },
+    backgroundImage: { control: 'text' },
+    buttonText: { control: 'text' },
+    buttonLink: { control: 'text' },
   },
-};
+} as Meta<typeof HeroBanner>;
 
-export default meta;
-type Story = StoryObj<typeof HeroBanner>;
+const Template: StoryFn<HeroBannerProps> = (args) => <HeroBanner {...args} />;
 
-export const Default: Story = {
-  args: {
-    title: 'Nos Destinations',
-    subtitle: 'Explorez 4 villes béninoises et leurs merveilles rurales',
-    imageUrl: 'https://source.unsplash.com/1600x900/?benin,nature,agriculture',
-    buttonLabel: 'Découvrir',
-    onClick: () => alert('Bouton cliqué !'),
-    isMobile: false,
-  },
+export const Default = Template.bind({});
+Default.args = {
+  title: 'Bienvenue sur AsheResort',
+  subtitle: 'Découvrir le Bénin autrement',
+  backgroundImage: '/images/hero.jpg',
+  buttonText: 'Découvrir',
+  buttonLink: '#explorer',
 };
 
 export const Mobile: Story = {
